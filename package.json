@@ -1,0 +1,21 @@
+{
+  "name": "monorepo",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "build": "pnpm run build:resolver && pnpm run build:components",
+    "build:components": "pnpm --filter k-naiveui-pro run build",
+    "build:resolver": "pnpm --filter k-naiveui-pro-resolver run build",
+    "docs:dev": "pnpm --filter docs run docs:dev",
+    "docs:build": "pnpm --filter docs run docs:build",
+    "example:dev": "pnpm --filter example run dev",
+    "modified:version": "bumpp package.json packages/*/package.json example/package.json docs/package.json --no-commit --no-tag",
+    "publish:npm": "pnpm -r publish --access=public --filter '!docs' -filter '!example' -filter '!monorepo' --no-git-checks"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bumpp": "^9.5.2"
+  }
+}

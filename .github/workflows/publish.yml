@@ -1,0 +1,35 @@
+name: Release Package
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # 仅匹配类似 v1.0.0 的标签
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upload Release Asset
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-dists
+          path: .
+
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 7.2.1
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish:npm

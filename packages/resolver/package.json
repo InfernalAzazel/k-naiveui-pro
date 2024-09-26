@@ -1,0 +1,42 @@
+{
+  "name": "k-naiveui-pro-resolver",
+  "version": "0.0.1",
+  "description": "",
+  "private": false,
+  "author": "kylin <260987762@qq.com>",
+  "license": "MIT",
+  "homepage": "https://infernalazazel.github.io/k-naiveui-pro/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/InfernalAzazel/k-naiveui-pro.git",
+    "directory": "packages/k-naiveui-pro/resolver"
+  },
+  "bugs": "https://github.com/InfernalAzazel/k-naiveui-pro/issues",
+  "keywords": [
+    "naive-ui",
+    "k-naiveui-pro",
+    "unplugin-vue-components"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": "./*"
+  },
+  "main": "src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "dependencies": {
+    "unbuild": "^2.0.0",
+    "@vue/tsconfig": "^0.4.0",
+    "unplugin-vue-components": "^0.27.4"
+  }
+}

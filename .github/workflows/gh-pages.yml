@@ -1,0 +1,34 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 7.2.1
+
+      - name: Install modules
+        run: pnpm install
+
+      - name: Compile components
+        run: pnpm build:components
+
+      - name: Compile resolver
+        run: pnpm build:resolver
+
+      - name: Run Lint
+        run: pnpm run docs:build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/.vitepress/dist
