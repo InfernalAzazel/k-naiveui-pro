@@ -18,10 +18,12 @@ jobs:
         with:
           name: release-dists
           path: .
-
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: actions/setup-node@v4
         with:
-          version: 7.2.1
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
@@ -30,6 +32,6 @@ jobs:
         run: pnpm build
 
       - name: Publish to npm
+      - run: pnpm publish:npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm publish:npm
