@@ -63,8 +63,6 @@ export default defineConfig({
 
 ## 按需引入
 
-使用 pnpm:
-
 ```bash
 pnpm add k-naiveui-pro-resolver unplugin-vue-components
 ```
