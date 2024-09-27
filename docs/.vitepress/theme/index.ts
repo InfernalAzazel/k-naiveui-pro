@@ -6,8 +6,6 @@ import { DemoBox } from '@sgwm-sutras/ui'
 import '@sgwm-sutras/ui/style'
 import naive from 'naive-ui'
 import naivePro from 'k-naiveui-pro'
-import {createI18n} from "vue-i18n";
-
 
 export default {
   extends: Theme,
@@ -31,7 +29,6 @@ export default {
         messages,
       });
     }
-    app.use(setupI18n())
     app.component('demo', DemoBox)
     app.use(naive)
     app.use(naivePro)
