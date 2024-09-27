@@ -1,9 +1,29 @@
 <script setup lang="ts">
 import { ref, useAttrs, computed } from 'vue'
-import {  ProStepsFormProps } from './props'
 import { Icon } from '@iconify/vue';
-import { FormValidateCallback, ShouldRuleBeApplied } from 'naive-ui/es/form/src/interface'
-import {ProBaseForm} from '../ProBaseForm'
+import type { FormValidateCallback, ShouldRuleBeApplied } from 'naive-ui/es/form/src/interface'
+import type { ButtonProps } from 'naive-ui'
+import { default as ProBaseForm, type ProBaseFormProps, type ProBaseFormColumn} from './ProBaseForm.vue'
+import type {ProFormToolBar} from "./ProForm.vue";
+
+export interface ProFormStepsToolBar extends ProFormToolBar{
+  prev?: boolean
+  prevProps?: ButtonProps
+  next?: boolean
+  nextProps?: ButtonProps
+}
+
+export interface ProStepsFormColumn {
+  label: string
+  description?: string | any
+  children: ProBaseFormColumn[]
+}
+export interface ProStepsFormProps extends Omit<ProBaseFormProps, 'columns'>  {
+  columns: ProStepsFormColumn[]
+  toolbar? : ProFormStepsToolBar
+  submit?: (isValid: boolean) => void
+  reset?: () => void
+}
 
 defineOptions({ name: 'ProStepsForm', inheritAttrs: false })
 

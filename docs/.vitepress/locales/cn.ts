@@ -50,6 +50,35 @@ export const cnConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
                     },
                 ]
             },
+            {
+                text: '其他组件',
+                items: [
+                    {
+                        text: 'ProAvatar',
+                        link: '/cn/other/index.md'
+                    },
+                    {
+                        text: 'ProBackground',
+                        link: '/cn/other/background.md'
+                    },
+                    {
+                        text: 'ProTabs',
+                        link: '/cn/other/tabs.md'
+                    },
+                    {
+                        text: 'ProToggleFullScreen',
+                        link: '/cn/other/toggleFullScreen.md'
+                    },
+                    {
+                        text: 'ProToggleLanguage',
+                        link: '/cn/other/toggleLanguage.md'
+                    },
+                    {
+                        text: 'ProToggleTheme',
+                        link: '/cn/other/toggleTheme.md'
+                    },
+                ]
+            },
         ],
     },
 

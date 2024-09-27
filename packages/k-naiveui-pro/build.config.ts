@@ -1,4 +1,6 @@
 import { defineBuildConfig } from 'unbuild'
+import fs from 'fs-extra'
+
 export default defineBuildConfig({
 
   entries: [
@@ -8,6 +10,11 @@ export default defineBuildConfig({
   ],
   declaration: true,
   clean: true,
+  hooks: {
+    'build:done': async () => {
+      await fs.copy('./src/assets', './dist/assets');
+    },
+  },
   // externals: [
   //   'vue',
   //   'naive-ui',

@@ -1,20 +1,11 @@
-import { ProLayout} from "./ProLayout"
-import {ProBaseForm} from "./ProBaseForm"
-import {ProForm} from "./ProForm"
-import {ProQueryForm} from "./ProQueryForm";
-import {ProStepsForm} from "./ProStepsForm";
-
-export * from "./ProLayout"
-export * from "./ProBaseForm"
-export * from "./ProForm"
-export * from "./ProQueryForm"
-export * from "./ProStepsForm"
-
-
-export default {
-    ProLayout,
-    ProBaseForm,
-    ProForm,
-    ProQueryForm,
-    ProStepsForm
-}
+export {default as ProBaseForm, type ProBaseFormColumn, type ProBaseFormProps} from './ProBaseForm.vue'
+export {default as ProForm, type ProFormProps, type ProFormToolBar} from './ProForm.vue'
+export {default as ProLayout, type ProLayoutProps} from './ProLayout.vue'
+export {default as ProQueryForm, type ProQueryFormToolBar, type ProQueryFormProps, type ProQueryFormColumn} from './ProQueryForm.vue'
+export {default as ProStepsForm, type ProStepsFormProps, type ProFormStepsToolBar, type ProStepsFormColumn} from './ProStepsForm.vue'
+export {default as ProAvatar, type ProAvatarProps} from './ProAvatar.vue'
+export {default as ProBackground} from './ProBackground.vue'
+export {default as ProTabs, type ProTabsProps, type ProTabData} from './ProTabs.vue'
+export {default as ProToggleFullScreen, type ProToggleFullScreenProps} from './ProToggleFullScreen.vue'
+export {default as ProToggleLanguage, type ProToggleLanguageProps} from './ProToggleLanguage.vue'
+export {default as ProToggleTheme, type ProToggleThemeProps} from './ProToggleTheme.vue'

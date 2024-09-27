@@ -1,12 +1,18 @@
 import type { Plugin } from 'vue'
-import components from './components'
+import * as allImport from './components';
+
+
+const components = Object.values(allImport).filter(
+    (component: any) => component && component.name
+);
 
 const install: Plugin = {
     install(app) {
-        for (const key of Object.keys(components))
-            app.component(key, components[key as keyof typeof components])
+        components.forEach(component => {
+            app.component(component.name, component);
+        });
     },
-}
+};
 
 export * from './components'
 export default install
