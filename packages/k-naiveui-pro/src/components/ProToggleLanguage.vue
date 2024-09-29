@@ -1,23 +1,28 @@
 <script setup lang="ts">
 import {Icon} from '@iconify/vue'
 import type {DropdownDividerOption, DropdownGroupOption, DropdownOption, DropdownRenderOption} from "naive-ui"
-import {useI18n} from "vue-i18n";
 
 export interface ProToggleLanguageProps {
-  options: Array<DropdownOption | DropdownGroupOption | DropdownDividerOption | DropdownRenderOption>
+  options?: Array<DropdownOption | DropdownGroupOption | DropdownDividerOption | DropdownRenderOption>
+  icon?: string
+  height?: number
+  width?: number
 }
 defineOptions({ name: 'ProToggleLanguage', inheritAttrs: false })
-const props = defineProps<ProToggleLanguageProps>()
-const { setLocale } = useI18n()
+const props = withDefaults(defineProps<ProToggleLanguageProps>(), {
+  icon: 'mdi:language',
+  height: 24,
+  width: 24
+})
+const emit = defineEmits<{
+  (e: 'select', key: string | number): void
+}>()
 
-function handleSelect(key: string) {
-  setLocale(key)
-}
 </script>
 
 <template>
-  <n-dropdown :options="props.options" @select="handleSelect" >
-    <Icon class="cursor-pointer" icon="mdi:language" :height="24" :width="24"/>
+  <n-dropdown :options="props.options" @select="(key) => emit('select', key)">
+    <Icon class="cursor-pointer" :icon="props.icon" :height="props.height" :width="props.width"/>
   </n-dropdown>
 </template>
 

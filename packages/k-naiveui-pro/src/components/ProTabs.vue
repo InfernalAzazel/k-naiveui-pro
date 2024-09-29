@@ -18,6 +18,9 @@ const modelValue = defineModel({default: []})
 const props = withDefaults(defineProps<ProTabsProps>(), {
   storageKey: 'proTabs',
 });
+const emit = defineEmits<{
+  (e: 'select', path: string): void
+}>()
 const {storageKey} = toRefs(props)
 const tabHistory = useLocalStorage<ProTabData[]>(storageKey.value, modelValue.value || []);
 const selected = useLocalStorage<number>(`${storageKey.value}-selected`, 0);
@@ -39,7 +42,13 @@ const horizontalScroll = (event: WheelEvent) => {
   if (proTabs) {
     proTabs.scrollLeft += deltaY;
   }
-};
+}
+
+function handleSelect(index: number) {
+  selected.value = index
+  emit('select', tabHistory.value[index].path || '')
+}
+
 
 </script>
 
@@ -53,7 +62,7 @@ const horizontalScroll = (event: WheelEvent) => {
         :key="index"
         class="flex flex-row cursor-pointer items-center pl-2 pr-2 space-x-2 border dark:border-gray-800 rounded hover:border-[var(--primary-color-hover)] hover:text-[var(--primary-color-hover)]"
         :class="{ 'border-[var(--primary-color-pressed)] text-[var(--primary-color-pressed)]': selected === index }"
-        @click="()=> selected = index"
+        @click="()=> handleSelect(index)"
         @wheel="horizontalScroll"
     >
       <Icon v-if="tab.icon" :icon="tab.icon" />

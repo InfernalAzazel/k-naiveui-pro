@@ -1,10 +1,10 @@
 <docs lang="md">
 ---
-title: 基础用法
+title: 自定义 `storageKey`
 ---
 </docs>
-<script lang="ts" setup>
-import {ref} from "vue";
+<script setup lang="ts">
+import { ref } from 'vue'
 import type { ProTabData } from 'k-naiveui-pro'
 import {createDiscreteApi} from "naive-ui";
 
@@ -21,13 +21,7 @@ const tabs = ref<ProTabData[]>([
 function handleTabSelect(path: string) {
   message.info(path)
 }
-
 </script>
-
 <template>
-  <ProTabs v-model="tabs" @select="handleTabSelect" />
+  <ProTabs v-model="tabs" storageKey="my-custom-tabs" @select="handleTabSelect" />
 </template>
-
-<style scoped>
-
-</style>
