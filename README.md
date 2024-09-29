@@ -9,7 +9,7 @@ English | [简体中文](./README-zh_CN.md)
 ## Install
 
 ```bash
-pnpm add naive-ui k-naiveui-pro unocss
+pnpm add naive-ui k-naiveui-pro unocss @vueuse/core @iconify/vue
 ```
 
 ## Use
@@ -102,15 +102,21 @@ export default defineConfig({
 
 ## List of things to do
 
-- [X] Add a ProLayout
-- [ ] Add a ProBreadcrumb
-- [ ] Add a ProRadio
-- [ ] Add a ProCheckbox
-- [X] Add a ProForm base
-- [X] Add a ProForm steps
-- [X] Add a ProForm query
-- [ ] Add a ProDataTable
-- [ ] Add a ProCrud
+- [X] Add a  ProLayout
+- [X] Add a  ProBaseForm
+- [X] Add a  ProQueryForm
+- [X] Add a  ProStepsForm
+- [ ] Add a  ProCrud
+- [ ] Add a  ProBreadcrumb
+- [X] Add a  ProBackground
+- [X] Add a  ProTabs
+- [ ] Add a  ProCheckbox
+- [ ] Add a  ProRadio
+- [X] Add a  ProColumnSetting
+- [X] Add a  ProDescriptions
+- [X] Add a  ProToggleFullScreen
+- [X] Add a  ProToggleLanguage
+- [X] Add a  ProToggleTheme
 
 ## License
 MIT

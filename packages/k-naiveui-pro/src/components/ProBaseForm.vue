@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { resolveComponent, useAttrs, ref } from 'vue'
+import {resolveComponent, useAttrs, ref, h} from 'vue'
 import type { FormInst } from 'naive-ui'
 import type { FormProps} from 'naive-ui'
 import type { VNode } from 'vue';
-
 
 export interface ProBaseFormColumn {
   label: string
@@ -44,6 +43,16 @@ function renderComponent(column: ProBaseFormColumn) {
   return typeof column.component === 'string' ? resolveComponent(column.component) : column.component
 }
 
+// 创建组件名到 v-model 属性名的映射表
+const vModelMap: Record<string, string> = {
+  'n-checkbox': 'checked',
+}
+
+// 获取组件对应的 v-model 属性名
+function getVModel(componentName: string): string {
+  return vModelMap[componentName] || 'value'
+}
+
 defineExpose({inst: ()=> formInstRef.value})
 </script>
 
@@ -65,8 +74,8 @@ defineExpose({inst: ()=> formInstRef.value})
                           :path="column.prop">
             <component :is="renderComponent(column)"
                        v-bind="column.props"
-                       v-model:value="modelValue[column.prop]"
-                       @update:value="(value: any) => modelValue[column.prop] = value" />
+                       v-model:[getVModel(column.component)]="modelValue[column.prop]"
+                       @update:[getVModel(column.component)]="(value: any) => modelValue[column.prop] = value" />
           </n-form-item-gi>
         </template>
         <n-grid-item suffix :span="props.footerSpan" #="{ overflow }" >

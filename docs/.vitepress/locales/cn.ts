@@ -37,8 +37,12 @@ export const cnConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
                 text: '表单组件',
                 items: [
                     {
-                        text: 'ProForm',
+                        text: 'ProBaseForm',
                         link: '/cn/form/index.md'
+                    },
+                    {
+                        text: 'ProForm',
+                        link: '/cn/form/form.md'
                     },
                     {
                         text: 'ProStepsForm',

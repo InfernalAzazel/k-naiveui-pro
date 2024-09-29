@@ -9,7 +9,7 @@
 ## 安装
 
 ```bash
-pnpm add naive-ui k-naiveui-pro unocss
+pnpm add naive-ui k-naiveui-pro unocss @vueuse/core @iconify/vue
 ```
 
 ## 使用
@@ -102,14 +102,21 @@ export default defineConfig({
 ## 办事列表
 
 - [X] 添加 ProLayout
-- [ ] 添加 ProBreadcrumb
-- [ ] 添加 ProRadio
-- [ ] 添加 ProCheckbox
-- [X] 添加 ProForm base
-- [X] 添加 ProForm steps
-- [X] 添加 ProForm query
-- [ ] 添加 ProDataTable
+- [X] 添加 ProBaseForm
+- [X] 添加 ProQueryForm
+- [X] 添加 ProStepsForm
 - [ ] 添加 ProCrud
+- [ ] 添加 ProBreadcrumb
+- [X] 添加 ProBackground
+- [X] 添加 ProTabs
+- [ ] 添加 ProCheckbox
+- [ ] 添加 ProRadio
+- [X] 添加 ProColumnSetting
+- [X] 添加 ProDescriptions
+- [X] 添加 ProToggleFullScreen
+- [X] 添加 ProToggleLanguage
+- [X] 添加 ProToggleTheme
+
 
 ## License
 MIT

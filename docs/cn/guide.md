@@ -1,7 +1,7 @@
 ## 安装
 
 ```bash
-pnpm add naive-ui k-naiveui-pro unocss
+pnpm add naive-ui k-naiveui-pro unocss @vueuse/core @iconify/vue
 ```
 
 ## 使用

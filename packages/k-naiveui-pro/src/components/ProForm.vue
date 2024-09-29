@@ -4,9 +4,6 @@ import type { FormValidateCallback, ShouldRuleBeApplied } from 'naive-ui/es/form
 import { default as ProBaseForm, type ProBaseFormProps} from './ProBaseForm.vue'
 import type { ButtonProps } from 'naive-ui'
 
-
-
-
 export interface ProFormToolBar {
   justify?: 'start' | 'end' | 'center' | 'space-around' | 'space-between' | 'space-evenly'
   submit?: boolean
@@ -28,7 +25,7 @@ export interface ProFormProps extends ProBaseFormProps {
 defineOptions({ name: 'ProForm', inheritAttrs: false })
 const props = withDefaults(defineProps<ProFormProps>(), {
   toolbar:() => ({
-    justify: 'start',
+    justify: 'end',
     submit: true,
     submitText: '提交',
     submitProps: {
@@ -73,7 +70,7 @@ defineExpose({
 <template>
   <ProBaseForm ref="formInstRef" v-model="modelValue" v-bind="attrs" :columns="props.columns">
     <template #footer>
-      <n-space :justify="toolbar.justify">
+      <n-space :justify="toolbar.justify as any">
         <slot name="toolbar">
           <n-button v-if="props.toolbar.submit" v-bind="props.toolbar.submitProps" @click="submit">{{ props.toolbar.submitText }}</n-button>
           <n-button v-if="props.toolbar.reset" v-bind="props.toolbar.resetProps" @click="reset">{{ props.toolbar.resetText }}</n-button>
