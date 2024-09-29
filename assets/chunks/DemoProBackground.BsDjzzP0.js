@@ -1,1 +1,0 @@
-import{_export_sfc as n,resolveComponent as r,openBlock as t,createElementBlock as c,createVNode as l,withCtx as d,createBaseVNode as a}from"./framework.-OAAjSM-.js";const u={};function _(s,e){const o=r("pro-background");return t(),c("div",null,[l(o,null,{default:d(()=>e[0]||(e[0]=[a("div",null,"这里可以是登陆表单内容",-1)])),_:1})])}const f=n(u,[["render",_]]);export{f as default};
