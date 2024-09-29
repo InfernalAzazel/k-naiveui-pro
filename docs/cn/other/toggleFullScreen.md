@@ -4,6 +4,9 @@
 
 <demo path="./components/DemoProToggleFullScreen" />
 
+<demo path="./components/DemoProToggleFullScreen2" />
+
+<demo path="./components/DemoProToggleFullScreen3" />
 
 ## Props
 
@@ -14,56 +17,4 @@
 | width              | `number`          | —   | `24`                                    | 图标的宽度，单位为像素        |
 | fullScreenIcon     | `string`          | —   | `'ant-design:fullscreen-outlined'`      | 进入全屏状态时显示的图标       |
 | exitFullScreenIcon | `string`          | —   | `'ant-design:fullscreen-exit-outlined'` | 退出全屏状态时显示的图标       |
-
-
-
-## 使用示例
-
-### 基本用法
-
-```vue
-<template>
-  <ProToggleFullScreen />
-</template>
-
-<script setup lang="ts">
-import ProToggleFullScreen from './ProToggleFullScreen.vue'
-</script>
-```
-
-### 自定义全屏和退出全屏的图标
-
-```vue
-<template>
-  <ProToggleFullScreen
-    fullScreenIcon="mdi:fullscreen"
-    exitFullScreenIcon="mdi:fullscreen-exit"
-  />
-</template>
-
-<script setup lang="ts">
-import ProToggleFullScreen from './ProToggleFullScreen.vue'
-</script>
-```
-
-### 指定需要全屏的元素
-
-```vue
-<template>
-  <div ref="fullscreenTarget">
-    <!-- 需要全屏的内容 -->
-    <p>这是需要全屏显示的内容。</p>
-  </div>
-  <ProToggleFullScreen :target="fullscreenTarget" />
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import ProToggleFullScreen from './ProToggleFullScreen.vue'
-
-const fullscreenTarget = ref<HTMLElement | null>(null)
-</script>
-```
-
----
 

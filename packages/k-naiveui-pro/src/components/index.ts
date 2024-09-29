@@ -9,3 +9,5 @@ export {default as ProTabs, type ProTabsProps, type ProTabData} from './ProTabs.
 export {default as ProToggleFullScreen, type ProToggleFullScreenProps} from './ProToggleFullScreen.vue'
 export {default as ProToggleLanguage, type ProToggleLanguageProps} from './ProToggleLanguage.vue'
 export {default as ProToggleTheme, type ProToggleThemeProps} from './ProToggleTheme.vue'
+export {default as ProColumnSetting, type ProColumnSettingProps} from './ProColumnSetting.vue'
+export {default as ProDescriptions, type ProDescriptionsProps} from './ProDescriptions.vue'

@@ -43,7 +43,7 @@ function handleSelect(key: string | number) {
 
 <template>
   <div class="flex justify-center">
-    <pro-avatar class="w-40" :options="options" name="admin" @select="handleSelect"/>
+    <pro-avatar class="w-40" :options="options" name="admin" @select="handleSelect" round/>
   </div>
 
 </template>

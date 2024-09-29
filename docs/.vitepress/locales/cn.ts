@@ -77,6 +77,14 @@ export const cnConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
                         text: 'ProToggleTheme',
                         link: '/cn/other/toggleTheme.md'
                     },
+                    {
+                        text: 'ProColumnSetting',
+                        link: '/cn/other/columnSetting.md'
+                    },
+                    {
+                        text: 'ProDescriptions',
+                        link: '/cn/other/descriptions.md'
+                    },
                 ]
             },
         ],
