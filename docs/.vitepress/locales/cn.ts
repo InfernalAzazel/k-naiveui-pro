@@ -89,6 +89,22 @@ export const cnConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
                         text: 'ProDescriptions',
                         link: '/cn/other/descriptions.md'
                     },
+                    {
+                        text: 'ProCheckbox',
+                        link: '/cn/other/checkbox.md'
+                    },
+                    {
+                        text: 'ProRadio',
+                        link: '/cn/other/radio.md'
+                    },
+                    {
+                        text: 'ProCheckCard',
+                        link: '/cn/other/checkCard.md'
+                    },
+                    {
+                        text: 'ProBreadcrumb',
+                        link: '/cn/other/breadcrumb.md'
+                    },
                 ]
             },
         ],

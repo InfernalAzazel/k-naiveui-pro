@@ -102,21 +102,23 @@ export default defineConfig({
 
 ## List of things to do
 
-- [X] Add a  ProLayout
-- [X] Add a  ProBaseForm
-- [X] Add a  ProQueryForm
-- [X] Add a  ProStepsForm
-- [ ] Add a  ProCrud
-- [ ] Add a  ProBreadcrumb
-- [X] Add a  ProBackground
-- [X] Add a  ProTabs
-- [ ] Add a  ProCheckbox
-- [ ] Add a  ProRadio
-- [X] Add a  ProColumnSetting
-- [X] Add a  ProDescriptions
-- [X] Add a  ProToggleFullScreen
-- [X] Add a  ProToggleLanguage
-- [X] Add a  ProToggleTheme
+- [X] Add a ProLayout
+- [X] Add a ProBaseForm
+- [X] Add a ProQueryForm
+- [X] Add a ProStepsForm
+- [ ] Add a ProCrud
+- [X] Add a ProBreadcrumb
+- [X] Add a ProBackground
+- [X] Add a ProTabs
+- [X] Add a ProCheckbox
+- [X] Add a ProRadio
+- [X] Add a ProColumnSetting
+- [X] Add a ProDescriptions
+- [X] Add a ProToggleFullScreen
+- [X] Add a ProToggleLanguage
+- [X] Add a ProToggleTheme
+- [X] Add a ProCheckCard
+- [X] Add a ProAvatar
 
 ## License
 MIT

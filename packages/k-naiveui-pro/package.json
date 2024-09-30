@@ -62,10 +62,12 @@
     "@iconify/vue": "^4.1.2",
     "@vue/tsconfig": "^0.4.0",
     "@vueuse/core": "^11.1.0",
+    "clsx": "^2.1.1",
     "eslint": "^8.57.0",
     "fs-extra": "^11.2.0",
     "naive-ui": "^2.39.0",
     "unbuild": "^2.0.0",
-    "vue": "^3.4.37"
+    "vue": "^3.4.37",
+    "vue-router": "^4.3.3"
   }
 }

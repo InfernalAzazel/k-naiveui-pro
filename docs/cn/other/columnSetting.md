@@ -1,4 +1,4 @@
-# ProColumnSetting 组件文档
+# ProColumnSetting
 
 > `ProColumnSetting` 是一个用于管理列设置的 Vue 3 组件，常用于表格组件中，提供列的显示/隐藏以及排序功能。该组件结合了 `naive-ui` 的 `n-popover`、`n-button`、`n-tree` 组件，允许用户通过勾选和拖拽的方式，自定义列的可见性和顺序。
 

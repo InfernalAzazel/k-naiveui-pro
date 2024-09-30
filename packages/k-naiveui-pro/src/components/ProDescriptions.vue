@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
-interface ProDescriptionsProps {
+export interface ProDescriptionsProps {
   columns: Array<{
     title: string
     key: string

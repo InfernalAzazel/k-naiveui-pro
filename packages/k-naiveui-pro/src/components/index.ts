@@ -11,3 +11,7 @@ export {default as ProToggleLanguage, type ProToggleLanguageProps} from './ProTo
 export {default as ProToggleTheme, type ProToggleThemeProps} from './ProToggleTheme.vue'
 export {default as ProColumnSetting, type ProColumnSettingProps} from './ProColumnSetting.vue'
 export {default as ProDescriptions, type ProDescriptionsProps} from './ProDescriptions.vue'
+export {default as ProCheckbox, type ProCheckboxProps, type ProCheckboxOption} from './ProCheckbox.vue'
+export {default as ProRadio, type ProRadioProps, type ProRadioOption} from './ProRadio.vue'
+export {default as ProCheckCard, type ProCheckCardProps, type ProCheckCardOption} from './ProCheckCard.vue'
+export {default as ProBreadcrumb, type ProBreadcrumbProps, type ProBreadcrumbOption} from './ProBreadcrumb.vue'
