@@ -1,1 +1,0 @@
-import{_export_sfc as o,resolveComponent as c,openBlock as n,createBlock as r}from"./framework.CO3--Yx1.js";const l={};function t(_,s){const e=c("pro-toggle-full-screen");return n(),r(e,{fullScreenIcon:"mdi:fullscreen",exitFullScreenIcon:"mdi:fullscreen-exit"})}const u=o(l,[["render",t]]);export{u as default};
