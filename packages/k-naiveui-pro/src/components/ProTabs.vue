@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineProps, toRefs, withDefaults} from 'vue';
+import {toRefs} from 'vue';
 import { Icon } from '@iconify/vue';
 import {useLocalStorage} from "@vueuse/core";
 
