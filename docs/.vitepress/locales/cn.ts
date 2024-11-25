@@ -9,7 +9,7 @@ export const cnConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
             text: 'Suggest changes to this page'
         },
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/InfernalAzazel/naiveui-pro-components' }
+            { icon: 'github', link: 'https://github.com/InfernalAzazel/k-naiveui-pro' }
         ],
         nav: [
             {
