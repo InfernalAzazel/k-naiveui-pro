@@ -45,7 +45,7 @@ const emits = defineEmits<{
   (e: 'search'): void
   (e: 'reset'): void
 }>()
-const modelValue = defineModel()
+const modelValue = defineModel<Record<string, any>>({default: {}})
 const attrs = useAttrs()
 const formInstRef = ref()
 const collapsed = ref(props.defaultCollapsed)

@@ -15,15 +15,15 @@ export interface ProCheckboxProps {
 }
 
 defineOptions({ name: 'ProCheckbox', inheritAttrs: false })
-const modelValue = defineModel<Array<string | number> | null>({default: []})
+const modelValue = defineModel<Array<string | number> | null>({default: null})
 const props = defineProps<ProCheckboxProps>()
 
-const { options, name, disabled, size, vertical } = toRefs(props)
+const { options, name, disabled, size } = toRefs(props)
 </script>
 
 <template>
   <n-checkbox-group
-      v-model:value="modelValue as any"
+      v-model:value="modelValue"
       :name="name"
       :disabled="disabled"
       :size="size"

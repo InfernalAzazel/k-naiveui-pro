@@ -35,7 +35,7 @@ const props = withDefaults(defineProps<ProFormProps>(), {
     resetText: '重置',
   })
 })
-const modelValue = defineModel()
+const modelValue = defineModel<Record<string, any>>({default:{}})
 const attrs = useAttrs()
 const formInstRef = ref()
 const emits = defineEmits<{

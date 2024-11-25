@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {DropdownDividerOption, DropdownGroupOption, DropdownOption, DropdownRenderOption} from "naive-ui"
+// @ts-ignore
 import defaultAvatar from '../assets/default-avatar.png'
 
 export interface ProAvatarProps {
@@ -23,7 +24,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <n-dropdown :options="props.options" @select="(key) => emit('select', key)">
+  <n-dropdown :options="props.options" @select="(key: string | number) => emit('select', key)">
     <div class="flex flex-row cursor-pointer items-center space-x-1">
       <n-avatar :src='props.src || defaultAvatar' :size="props.size" :lazy="props.round" :round="props.round"/>
       <span>{{props?.name}}</span>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {resolveComponent, useAttrs, ref, h} from 'vue'
+import {resolveComponent, useAttrs, ref} from 'vue'
 import type { FormInst } from 'naive-ui'
 import type { FormProps} from 'naive-ui'
 import type { VNode } from 'vue';
@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<ProBaseFormProps>(), {
   collapsedRows: 1,
 })
 const formInstRef = ref<FormInst | null>(null)
-const modelValue = defineModel({default: {}})
+const modelValue = defineModel<Record<string, any>>({default: {}})
 const attrs = useAttrs()
 function renderComponent(column: ProBaseFormColumn) {
   return typeof column.component === 'string' ? resolveComponent(column.component) : column.component
@@ -49,7 +49,7 @@ const vModelMap: Record<string, string> = {
 }
 
 // 获取组件对应的 v-model 属性名
-function getVModel(componentName: string): string {
+function getVModel(componentName: string | any): string {
   return vModelMap[componentName] || 'value'
 }
 
