@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineProps, toRefs, defineEmits } from 'vue';
+import { computed, toRefs } from 'vue';
 import { Icon } from '@iconify/vue';
 import clsx from 'clsx';
 

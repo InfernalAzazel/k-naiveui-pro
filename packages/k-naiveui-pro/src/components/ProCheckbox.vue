@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, toRefs } from 'vue'
+import { toRefs } from 'vue'
 
 export interface ProCheckboxOption {
   label: string

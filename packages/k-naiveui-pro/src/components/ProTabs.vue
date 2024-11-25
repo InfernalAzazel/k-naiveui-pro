@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import {toRefs} from 'vue';
+import {ref} from 'vue';
 import { Icon } from '@iconify/vue';
-import {useLocalStorage} from "@vueuse/core";
 
 export interface ProTabData {
-  icon?: string;
-  title?: string;
-  path?: string;
+  icon?: string; // 图标的名称
+  title?: string; // 选项卡的标题
+  path?: string; // 路由路径
 }
 
 export interface ProTabsProps {
@@ -14,47 +13,43 @@ export interface ProTabsProps {
 }
 
 defineOptions({ name: 'ProTabs', inheritAttrs: false });
-const modelValue = defineModel({default: []})
-const props = withDefaults(defineProps<ProTabsProps>(), {
-  storageKey: 'proTabs',
-});
+
+const modelValue = defineModel<ProTabData[]>({ default: [] });
 const emit = defineEmits<{
-  (e: 'select', path: string): void
-}>()
-const {storageKey} = toRefs(props)
-const tabHistory = useLocalStorage<ProTabData[]>(storageKey.value, modelValue.value || []);
-const selected = useLocalStorage<number>(`${storageKey.value}-selected`, 0);
+  (e: 'select', path: string): void; // 选项卡切换事件
+}>();
+// 当前选中的选项卡索引
+const selected = ref(0);
 
 
-
+// 删除选项卡（第一个选项卡不可删除）
 function handleRemove(index: number) {
-  if (index >= 0 && index < modelValue.value.length) {
-    modelValue.value.splice(index, 1);
-    tabHistory.value = [...modelValue.value];
-    selected.value = selected.value >= tabHistory.value.length ? tabHistory.value.length - 1 : selected.value;
+  if (index === 0) return; // 阻止删除第一个选项卡
+  modelValue.value.splice(index, 1); // 移除选项卡
+  if (selected.value >= modelValue.value.length) {
+    selected.value = modelValue.value.length - 1; // 更新选中状态
   }
-
 }
 
+// 横向滚动逻辑
 const horizontalScroll = (event: WheelEvent) => {
   const { deltaY } = event;
   const proTabs = document.querySelector('.pro-tabs');
   if (proTabs) {
-    proTabs.scrollLeft += deltaY;
+    proTabs.scrollLeft += deltaY; // 横向滚动
   }
-}
+};
 
+// 选项卡切换逻辑
 function handleSelect(index: number) {
-  selected.value = index
-  emit('select', tabHistory.value[index].path || '')
+  selected.value = index; // 更新当前选中的索引
+  emit('select', modelValue.value[index].path || ''); // 触发选中事件
 }
-
-
 </script>
 
 <template>
   <n-el
-      class="pro-tabs flex space-x-1 w-full h-[40px] px-[20px] overflow-x-auto overflow-x-hidden  text-ellipsis whitespace-nowrap items-center scroll-smooth"
+      class="pro-tabs flex space-x-1 w-full h-[40px] px-[20px] overflow-x-auto overflow-x-hidden text-ellipsis whitespace-nowrap items-center scroll-smooth"
       @wheel="horizontalScroll"
   >
     <n-el
@@ -62,12 +57,17 @@ function handleSelect(index: number) {
         :key="index"
         class="flex flex-row cursor-pointer items-center pl-2 pr-2 space-x-2 border dark:border-gray-800 rounded hover:border-[var(--primary-color-hover)] hover:text-[var(--primary-color-hover)]"
         :class="{ 'border-[var(--primary-color-pressed)] text-[var(--primary-color-pressed)]': selected === index }"
-        @click="()=> handleSelect(index)"
+        @click="() => handleSelect(index)"
         @wheel="horizontalScroll"
     >
       <Icon v-if="tab.icon" :icon="tab.icon" />
       <span>{{ tab.title }}</span>
-      <Icon icon="carbon:close" @click.stop="handleRemove(index)" />
+      <!-- 删除按钮（第一个选项卡禁用删除） -->
+      <Icon
+          v-if="index !== 0"
+      icon="carbon:close"
+      @click.stop="handleRemove(index)"
+      />
     </n-el>
   </n-el>
 </template>

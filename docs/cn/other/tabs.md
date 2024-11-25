@@ -4,14 +4,12 @@
 
 <demo path="./components/DemoProTabs" />
 
-<demo path="./components/DemoProTabs2" />
 
 ## **属性 (Props)**
 
 | 参数             | 类型             | 默认值         | 描述                             |
 |----------------|----------------|-------------|--------------------------------|
 | **v-model**    | `ProTabData[]` | `[]`        | 绑定的标签页数据数组，使用 `v-model` 进行双向绑定 |
-| **storageKey** | `string`       | `'proTabs'` | 本地存储的键名，用于保存标签页数据和选中状态         |
 
 ## **ProTabData 配置**
 
