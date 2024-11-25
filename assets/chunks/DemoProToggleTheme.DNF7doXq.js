@@ -1,0 +1,1 @@
+import{_export_sfc as o,resolveComponent as t,openBlock as r,createBlock as c}from"./framework.BZvP3IB3.js";const n={};function _(m,p){const e=t("pro-toggle-theme");return r(),c(e)}const l=o(n,[["render",_]]);export{l as default};
