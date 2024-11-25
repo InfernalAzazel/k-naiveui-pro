@@ -8,13 +8,13 @@
 
 <demo path="./components/DemoProToggleFullScreen3" />
 
-## Props
+## **属性 (Props)**
 
-| 参数                 | 类型                | 可选值 | 默认值                                     | 说明                 |
-|--------------------|-------------------|-----|-----------------------------------------|--------------------|
-| target             | `MaybeElementRef` | —   | —                                       | 可选，需要全屏的目标元素，默认为文档 |
-| height             | `number`          | —   | `24`                                    | 图标的高度，单位为像素        |
-| width              | `number`          | —   | `24`                                    | 图标的宽度，单位为像素        |
-| fullScreenIcon     | `string`          | —   | `'ant-design:fullscreen-outlined'`      | 进入全屏状态时显示的图标       |
-| exitFullScreenIcon | `string`          | —   | `'ant-design:fullscreen-exit-outlined'` | 退出全屏状态时显示的图标       |
+| 参数                     | 类型                | 默认值                                     | 描述                 |
+|------------------------|-------------------|-----------------------------------------|--------------------|
+| **target**             | `MaybeElementRef` | —                                       | 可选，需要全屏的目标元素，默认为文档 |
+| **height**             | `number`          | `24`                                    | 图标的高度，单位为像素        |
+| **width**              | `number`          | `24`                                    | 图标的宽度，单位为像素        |
+| **fullScreenIcon**     | `string`          | `'ant-design:fullscreen-outlined'`      | 进入全屏状态时显示的图标       |
+| **exitFullScreenIcon** | `string`          | `'ant-design:fullscreen-exit-outlined'` | 退出全屏状态时显示的图标       |
 

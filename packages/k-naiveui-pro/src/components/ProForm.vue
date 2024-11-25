@@ -16,8 +16,6 @@ export interface ProFormToolBar {
 
 export interface ProFormProps extends ProBaseFormProps {
   toolbar? : ProFormToolBar
-  submit?: (isValid: boolean) => void
-  reset?: () => void
 }
 
 

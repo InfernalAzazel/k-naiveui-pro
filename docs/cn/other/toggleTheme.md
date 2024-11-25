@@ -6,11 +6,11 @@
 <demo path="./components/DemoProToggleTheme" />
 
 
-## Props
+## **属性 (Props)**
 
-| 参数       | 类型       | 可选值 | 默认值                          | 说明                 |
-|----------|----------|-----|------------------------------|--------------------|
-| moonIcon | `string` | —   | `'ant-design:moon-outlined'` | 深色模式下显示的图标，表示为月亮图标 |
-| sunIcon  | `string` | —   | `'ant-design:sun-outlined'`  | 浅色模式下显示的图标，表示为太阳图标 |
-| height   | `number` | —   | `24`                         | 图标的高度，单位为像素        |
-| width    | `number` | —   | `24`                         | 图标的宽度，单位为像素        |
+| 参数           | 类型       | 默认值                          | 说明                 |
+|--------------|----------|------------------------------|--------------------|
+| **moonIcon** | `string` | `'ant-design:moon-outlined'` | 深色模式下显示的图标，表示为月亮图标 |
+| **sunIcon**  | `string` | `'ant-design:sun-outlined'`  | 浅色模式下显示的图标，表示为太阳图标 |
+| **height**   | `number` | `24`                         | 图标的高度，单位为像素        |
+| **width**    | `number` | `24`                         | 图标的宽度，单位为像素        |

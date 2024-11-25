@@ -1,12 +1,12 @@
-<script setup lang="ts">
-import { ref, useAttrs, computed } from 'vue'
-import { Icon } from '@iconify/vue';
-import type { FormValidateCallback, ShouldRuleBeApplied } from 'naive-ui/es/form/src/interface'
-import type { ButtonProps } from 'naive-ui'
-import { default as ProBaseForm, type ProBaseFormProps, type ProBaseFormColumn} from './ProBaseForm.vue'
+<script lang="ts" setup>
+import {computed, ref, useAttrs} from 'vue'
+import {Icon} from '@iconify/vue';
+import type {FormValidateCallback, ShouldRuleBeApplied} from 'naive-ui/es/form/src/interface'
+import type {ButtonProps} from 'naive-ui'
+import {default as ProBaseForm, type ProBaseFormColumn, type ProBaseFormProps} from './ProBaseForm.vue'
 import type {ProFormToolBar} from "./ProForm.vue";
 
-export interface ProFormStepsToolBar extends ProFormToolBar{
+export interface ProFormStepsToolBar extends ProFormToolBar {
   prev?: boolean
   prevProps?: ButtonProps
   next?: boolean
@@ -18,17 +18,16 @@ export interface ProStepsFormColumn {
   description?: string | any
   children: ProBaseFormColumn[]
 }
-export interface ProStepsFormProps extends Omit<ProBaseFormProps, 'columns'>  {
+
+export interface ProStepsFormProps extends Omit<ProBaseFormProps, 'columns'> {
   columns: ProStepsFormColumn[]
-  toolbar? : ProFormStepsToolBar
-  submit?: (isValid: boolean) => void
-  reset?: () => void
+  toolbar?: ProFormStepsToolBar
 }
 
-defineOptions({ name: 'ProStepsForm', inheritAttrs: false })
+defineOptions({name: 'ProStepsForm', inheritAttrs: false})
 
 const props = withDefaults(defineProps<ProStepsFormProps>(), {
-  toolbar:() => ({
+  toolbar: () => ({
     justify: 'start',
     submit: true,
     submitText: '提交',
@@ -41,12 +40,12 @@ const props = withDefaults(defineProps<ProStepsFormProps>(), {
     next: true,
   })
 })
-const modelValue = defineModel({default:{}})
+const modelValue = defineModel<Record<string, any>>({default: {}})
 const attrs = useAttrs()
 const formInstRef = ref()
 const currentStep = ref(1)
-const isMinStep = computed(()=> currentStep.value === 1)
-const isMaxStep = computed(()=> currentStep.value === props.columns.length)
+const isMinStep = computed(() => currentStep.value === 1)
+const isMaxStep = computed(() => currentStep.value === props.columns.length)
 const emits = defineEmits<{
   (e: 'submit', isValid: boolean): void
   (e: 'reset'): void
@@ -96,23 +95,37 @@ defineExpose({
 
 <template>
   <n-space vertical>
-    <ProBaseForm ref="formInstRef" v-model="modelValue" v-bind="attrs" :columns="props.columns[currentStep - 1].children">
+    <ProBaseForm ref="formInstRef" v-model="modelValue" :columns="props.columns[currentStep - 1].children"
+                 v-bind="attrs">
       <template #header>
         <n-steps :current="currentStep">
-          <NStep v-for="(step, index) in props.columns" :key="index" :title="step.label" :description="step.description"/>
+          <NStep v-for="(step, index) in props.columns" :key="index" :description="step.description"
+                 :title="step.label"/>
         </n-steps>
       </template>
       <!-- 工具栏 -->
       <template #footer>
-        <n-space :justify="props.toolbar.justify" >
-          <n-button v-if="props.toolbar.prev" v-bind="props.toolbar.prevProps" :disabled="isMinStep" @click="prevStep">
-            <template #icon><icon icon="ion:arrow-back-outline"/></template>
-          </n-button>
-          <n-button v-if="props.toolbar.next" v-bind="props.toolbar.nextProps" :disabled="isMaxStep" @click="nextStep">
-            <template #icon><icon icon="ion:arrow-forward-outline"/></template>
-          </n-button>
-          <n-button v-if="props.toolbar.submit" v-bind="toolbar.submitProps" :disabled="!isMaxStep" @click="submit">{{ props.toolbar.submitText }}</n-button>
-          <n-button v-if="props.toolbar.reset" v-bind="props.toolbar.resetProps" @click="reset">{{ props.toolbar.resetText }}</n-button>
+        <n-space :justify="props.toolbar.justify">
+          <slot name="toolbar">
+            <n-button v-if="props.toolbar.prev" :disabled="isMinStep" v-bind="props.toolbar.prevProps"
+                      @click="prevStep">
+              <template #icon>
+                <icon icon="ion:arrow-back-outline"/>
+              </template>
+            </n-button>
+            <n-button v-if="props.toolbar.next" :disabled="isMaxStep" v-bind="props.toolbar.nextProps"
+                      @click="nextStep">
+              <template #icon>
+                <icon icon="ion:arrow-forward-outline"/>
+              </template>
+            </n-button>
+            <n-button v-if="props.toolbar.submit" :disabled="!isMaxStep" v-bind="toolbar.submitProps" @click="submit">
+              {{ props.toolbar.submitText }}
+            </n-button>
+            <n-button v-if="props.toolbar.reset" v-bind="props.toolbar.resetProps" @click="reset">
+              {{ props.toolbar.resetText }}
+            </n-button>
+          </slot>
         </n-space>
       </template>
     </ProBaseForm>

@@ -8,13 +8,13 @@
 
 <demo path="./components/DemoProDescriptions3" />
 
-## 参数
+## **属性 (Props)**
 
-| 参数        | 类型                                                         | 可选值                            | 默认值        | 说明                                        |
-|-----------|------------------------------------------------------------|--------------------------------|------------|-------------------------------------------|
-| columns   | `Array<{ title: string; key: string; render?: Function }>` | —                              | `[]`       | 描述列表的列配置，与 `n-table` 的 columns 配置类似，可直接复用 |
-| data      | `Record<string, any>`                                      | —                              | `{}`       | 描述列表的数据对象，包含要展示的字段和值                      |
-| title     | `string`                                                   | —                              | `''`       | 描述列表的标题，显示在列表的顶部                          |
-| colNumber | `number`                                                   | —                              | `2`        | 每行显示的描述项数量                                |
-| size      | `'small'` \| `'medium'` \| `'large'`                       | `'small'` `'medium'` `'large'` | `'medium'` | 描述列表的尺寸大小                                 |
-| bordered  | `boolean`                                                  | `true` `false`                 | `false`    | 是否显示边框                                    |
+| 参数            | 类型                                                         | 可选值                            | 默认值        | 说明                                        |
+|---------------|------------------------------------------------------------|--------------------------------|------------|-------------------------------------------|
+| **columns**   | `Array<{ title: string; key: string; render?: Function }>` | —                              | `[]`       | 描述列表的列配置，与 `n-table` 的 columns 配置类似，可直接复用 |
+| **data**      | `Record<string, any>`                                      | —                              | `{}`       | 描述列表的数据对象，包含要展示的字段和值                      |
+| **title**     | `string`                                                   | —                              | `''`       | 描述列表的标题，显示在列表的顶部                          |
+| **colNumber** | `number`                                                   | —                              | `2`        | 每行显示的描述项数量                                |
+| **size**      | `'small'` \| `'medium'` \| `'large'`                       | `'small'` `'medium'` `'large'` | `'medium'` | 描述列表的尺寸大小                                 |
+| **bordered**  | `boolean`                                                  | `true` `false`                 | `false`    | 是否显示边框                                    |

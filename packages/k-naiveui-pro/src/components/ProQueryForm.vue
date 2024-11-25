@@ -22,8 +22,6 @@ export interface ProQueryFormProps extends /* @vue-ignore */ FormProps {
   showNumber?: number
   labelPlacement?: 'left' | 'top'
   defaultCollapsed?: boolean
-  search?: () => void
-  reset?: () => void
 }
 
 defineOptions({ name: 'ProQueryForm', inheritAttrs: false })
