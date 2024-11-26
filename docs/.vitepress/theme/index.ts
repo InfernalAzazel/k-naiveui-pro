@@ -10,25 +10,6 @@ import naivePro from 'k-naiveui-pro'
 export default {
   extends: Theme,
   enhanceApp({app}) {
-    const messages = {
-      'en-US': {
-        message: {
-          hello: 'hello world'
-        }
-      },
-      'zh-CN': {
-        message: {
-          hello: '你好，世界'
-        }
-      }
-    };
-    function setupI18n() {
-      return createI18n({
-        legacy: false,
-        locale: 'zh-CN', // 默认语言
-        messages,
-      });
-    }
     app.component('demo', DemoBox)
     app.use(naive)
     app.use(naivePro)

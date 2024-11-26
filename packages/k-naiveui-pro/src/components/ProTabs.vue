@@ -25,8 +25,8 @@ const selected = ref(0);
 // 动态计算边框样式
 const borderClass = computed(() => {
   return props.borderStyle === 'bottom'
-      ? 'border-b border-gray-300 dark:border-gray-700'
-      : 'border border-gray-300 dark:border-gray-700';
+      ? 'border-b border-[var(--border-color)]'
+      : 'border border-[var(--border-color)]';
 });
 
 // 删除选项卡（第一个选项卡不可删除）
@@ -55,7 +55,7 @@ function handleSelect(index: number) {
 </script>
 
 <template>
-  <n-el  class="flex flex-row pr-4" :class="borderClass" tag="div">
+  <n-el  class="flex flex-row items-center pr-4" :class="borderClass" tag="div">
     <n-el
         class="pro-tabs flex space-x-1 w-full h-[40px] px-[20px] overflow-x-auto overflow-x-hidden text-ellipsis whitespace-nowrap items-center scroll-smooth"
         tag="div"
