@@ -18,9 +18,7 @@ const tabs = ref<ProTabData[]>([
   { title: '我的账户', path: '/account' },
   { title: '设置', path: '/settings' }
 ])
-// 下拉菜单选项
 
-// 定义下拉菜单选项
 const dropdownOptions = [
   {
     label: '刷新',

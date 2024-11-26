@@ -12,11 +12,15 @@ export interface ProTabsProps {
 }
 
 defineOptions({name: 'ProTabs', inheritAttrs: false});
+defineExpose({
+  setSelected
+});
 const props = withDefaults(defineProps<ProTabsProps>(), {
   borderStyle: 'all', // 默认值为完整边框
 });
 
 const modelValue = defineModel<ProTabData[]>({default: []});
+
 const emit = defineEmits<{
   (e: 'select', path: string): void; // 选项卡切换事件
 }>();
@@ -52,6 +56,15 @@ function handleSelect(index: number) {
   selected.value = index; // 更新当前选中的索引
   emit('select', modelValue.value[index].path || ''); // 触发选中事件
 }
+
+// 设置选中的选项卡
+function setSelected(index: number) {
+  if (index >= 0 && index < modelValue.value.length) {
+    selected.value = index; // 更新选中索引
+    emit('select', modelValue.value[index]?.path || ''); // 触发选中事件
+  }
+}
+
 </script>
 
 <template>
