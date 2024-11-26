@@ -1,26 +1,33 @@
-<script setup lang="ts">
-import {ref} from 'vue';
-import { Icon } from '@iconify/vue';
+<script lang="ts" setup>
+import {computed, ref} from 'vue';
+import {Icon} from '@iconify/vue';
 
 export interface ProTabData {
-  icon?: string; // 图标的名称
   title?: string; // 选项卡的标题
   path?: string; // 路由路径
 }
 
 export interface ProTabsProps {
-  storageKey?: string;
+  borderStyle?: 'all' | 'bottom';
 }
 
-defineOptions({ name: 'ProTabs', inheritAttrs: false });
+defineOptions({name: 'ProTabs', inheritAttrs: false});
+const props = withDefaults(defineProps<ProTabsProps>(), {
+  borderStyle: 'all', // 默认值为完整边框
+});
 
-const modelValue = defineModel<ProTabData[]>({ default: [] });
+const modelValue = defineModel<ProTabData[]>({default: []});
 const emit = defineEmits<{
   (e: 'select', path: string): void; // 选项卡切换事件
 }>();
 // 当前选中的选项卡索引
 const selected = ref(0);
-
+// 动态计算边框样式
+const borderClass = computed(() => {
+  return props.borderStyle === 'bottom'
+      ? 'border-b border-gray-300 dark:border-gray-700'
+      : 'border border-gray-300 dark:border-gray-700';
+});
 
 // 删除选项卡（第一个选项卡不可删除）
 function handleRemove(index: number) {
@@ -33,7 +40,7 @@ function handleRemove(index: number) {
 
 // 横向滚动逻辑
 const horizontalScroll = (event: WheelEvent) => {
-  const { deltaY } = event;
+  const {deltaY} = event;
   const proTabs = document.querySelector('.pro-tabs');
   if (proTabs) {
     proTabs.scrollLeft += deltaY; // 横向滚动
@@ -48,27 +55,37 @@ function handleSelect(index: number) {
 </script>
 
 <template>
-  <n-el
-      class="pro-tabs flex space-x-1 w-full h-[40px] px-[20px] overflow-x-auto overflow-x-hidden text-ellipsis whitespace-nowrap items-center scroll-smooth"
-      @wheel="horizontalScroll"
-  >
+  <n-el  class="flex flex-row pr-4" :class="borderClass" tag="div">
     <n-el
-        v-for="(tab, index) in modelValue"
-        :key="index"
-        class="flex flex-row cursor-pointer items-center pl-2 pr-2 space-x-2 border dark:border-gray-800 rounded hover:border-[var(--primary-color-hover)] hover:text-[var(--primary-color-hover)]"
-        :class="{ 'border-[var(--primary-color-pressed)] text-[var(--primary-color-pressed)]': selected === index }"
-        @click="() => handleSelect(index)"
+        class="pro-tabs flex space-x-1 w-full h-[40px] px-[20px] overflow-x-auto overflow-x-hidden text-ellipsis whitespace-nowrap items-center scroll-smooth"
+        tag="div"
         @wheel="horizontalScroll"
     >
-      <Icon v-if="tab.icon" :icon="tab.icon" />
-      <span>{{ tab.title }}</span>
-      <!-- 删除按钮（第一个选项卡禁用删除） -->
-      <Icon
-          v-if="index !== 0"
-      icon="carbon:close"
-      @click.stop="handleRemove(index)"
-      />
+      <n-el
+          v-for="(tab, index) in modelValue"
+          :key="index"
+          :class="[{ 'border-[var(--primary-color-pressed)] text-[var(--primary-color-pressed)]': selected === index }]"
+          class="flex flex-row cursor-pointer items-center pl-2 pr-2 space-x-2 border dark:border-gray-800 rounded hover:border-[var(--primary-color-hover)] hover:text-[var(--primary-color-hover)]"
+          tag="div"
+          @click="() => handleSelect(index)"
+          @wheel="horizontalScroll"
+      >
+        <!-- 显示选中状态的小圆点 -->
+        <span
+            v-if="selected === index"
+            class="w-2 h-2 bg-[var(--primary-color-pressed)] rounded-full"
+        ></span>
+        <span>{{ tab.title }}</span>
+        <!-- 删除按钮（第一个选项卡禁用删除） -->
+        <Icon
+            v-if="index !== 0"
+            icon="carbon:close"
+            @click.stop="handleRemove(index)"
+        />
+      </n-el>
     </n-el>
+    <div class="flex-grow"/>
+    <slot name="toolbar" />
   </n-el>
 </template>
 
