@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<ProTabsProps>(), {
 const modelValue = defineModel<ProTabData[]>({default: []});
 
 const emit = defineEmits<{
-  (e: 'select', path: string): void; // 选项卡切换事件
+  (e: 'changeSelect', path: string): void; // 选项卡切换事件
 }>();
 // 当前选中的选项卡索引
 const selected = ref(0);
@@ -39,6 +39,7 @@ function handleRemove(index: number) {
   modelValue.value.splice(index, 1); // 移除选项卡
   if (selected.value >= modelValue.value.length) {
     selected.value = modelValue.value.length - 1; // 更新选中状态
+    emit('changeSelect', modelValue.value[selected.value]?.path || '');
   }
 }
 
@@ -54,14 +55,14 @@ const horizontalScroll = (event: WheelEvent) => {
 // 选项卡切换逻辑
 function handleSelect(index: number) {
   selected.value = index; // 更新当前选中的索引
-  emit('select', modelValue.value[index].path || ''); // 触发选中事件
+  emit('changeSelect', modelValue.value[index].path || '');
 }
 
 // 设置选中的选项卡
 function setSelected(index: number) {
   if (index >= 0 && index < modelValue.value.length) {
     selected.value = index; // 更新选中索引
-    emit('select', modelValue.value[index]?.path || ''); // 触发选中事件
+    emit('changeSelect', modelValue.value[index]?.path || '');
   }
 }
 

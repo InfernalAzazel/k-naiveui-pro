@@ -52,7 +52,7 @@ function handleDropdownSelect(key: string) {
 </script>
 
 <template>
-  <ProTabs v-model="tabs"  @select="handleTabSelect" >
+  <ProTabs v-model="tabs"  @change-select="handleTabSelect" >
     <template #toolbar>
       <n-dropdown trigger="hover" :options="dropdownOptions" @select="handleDropdownSelect">
         <Icon icon="ant-design:appstore-outlined" height="24" width="24" />
